@@ -1,3 +1,3 @@
 # selenium
-Tải thư viện bên dưới:
+Tải thư viện java bên dưới:
   https://www.seleniumhq.org/download/
