@@ -25,7 +25,7 @@ public class MyClass {
 		ArrayList<String> urlList = new ArrayList<>();
 		// declaration and instantiation of objects/variables
 		//System.setProperty("webdriver.chrome.marionette","F:\\chromedriver.exe");
-		System.setProperty("webdriver.chrome.driver", "F:\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "E:\\chromedriver.exe");
     	WebDriver driver = new ChromeDriver();
 		int count = 5000;
 
@@ -42,7 +42,7 @@ public class MyClass {
 			    System.out.println("Cho de dang ky Tournaments : " + sleep + " Minute");
 				Thread.currentThread().sleep(sleep*60000);
 			} catch (InterruptedException e) {
-				// TODO 自動生成された catch ブロック
+				// TODO 閾ｪ蜍慕函謌舌＆繧後◆ catch 繝悶Ο繝�繧ｯ
 				e.printStackTrace();
 			}
 
@@ -258,8 +258,8 @@ public class MyClass {
 			try {
 				driver.get(loginUrl);
 		        Thread.currentThread().sleep(2000);
-		        driver.findElement(By.name("username")).sendKeys("AAAAAA");;
-		        driver.findElement(By.name("password")).sendKeys("BBBBBB");
+		        driver.findElement(By.name("username")).sendKeys("mquandvr_fjs");;
+		        driver.findElement(By.name("password")).sendKeys("Abc12345@");
 		        Thread.currentThread().sleep(2000);
 		        driver.findElement(By.cssSelector(".-padding-v-2 > .button--content")).click();;
 		        System.out.println("Login OK");
@@ -291,28 +291,38 @@ public class MyClass {
 			if (menthodName.length() > 0) {
 				//menthodName = menthodName.split("(")[0];
 				//menthodName = menthodName.replace("function ", "");
-			     File folderJS = new File("F:\\Selenium\\OTS\\CodeFights-master\\CodeFights-master\\solutions\\javascript\\" + menthodName + ".js");
-			     File folderJava = new File("F:\\Selenium\\OTS\\Java_new\\" + menthodName + ".java");
+			     //File folderJS = new File("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\CodeFights-master\\CodeFights-master\\solutions\\javascript\\" + menthodName + ".js");
+			     //File folderJava = new File("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Java_new\\" + menthodName + ".java");
+			     File folderPy = new File("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\SourceNew\\Py3\\" + menthodName + ".py3");
 
 		         String sourceCode = new String("");
 		         String sourceCodeJS = new String("");
 		         String sourceCodeJava = new String("");
 		         String Mode = "JS";
 		         // Doc source JS
-		         sourceCodeJS = readContent(folderJS);
-		         if (sourceCodeJS.length() > 0) {
-		        	 sourceCode = sourceCodeJS;
-		        	 System.out.println("OK=======Co Source JS");
-		         } else {
-		        	 sourceCodeJava = readContent(folderJava);
-		        	 if (sourceCodeJava.length() > 0) {
-		        		 Mode = "Java";
-			        	 sourceCode = sourceCodeJava;
-			        	 System.out.println("OK=======Co Source Java ");
-		        	 } else {
-		        		 createFileNotFound("F:\\Selenium\\OTS\\Method_SourceCodeNotFound\\",menthodName,"java");
-		        	 }
-		         }
+//		         sourceCodeJS = readContent(folderJS);
+//		         if (sourceCodeJS.length() > 0) {
+//		        	 sourceCode = sourceCodeJS;
+//		        	 System.out.println("OK=======Co Source JS");
+//		         } else {
+//		        	 sourceCodeJava = readContent(folderJava);
+//		        	 if (sourceCodeJava.length() > 0) {
+//		        		 Mode = "Java";
+//			        	 sourceCode = sourceCodeJava;
+//			        	 System.out.println("OK=======Co Source Java ");
+//		        	 } else {
+//		        		 createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeNotFound\\",menthodName,"java");
+//		        	 }
+//		         }
+		         
+		         sourceCodeJava = readContent(folderPy);
+	        	 if (sourceCodeJava.length() > 0) {
+	        		 Mode = "Python3";
+		        	 sourceCode = sourceCodeJava;
+		        	 System.out.println("OK=======Co Source Python ");
+	        	 } else {
+	        		 createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeNotFound\\",menthodName,"py3");
+	        	 }
 
 		         if (sourceCode.length() > 0) {
 		        	 // Chon ngon ngu
@@ -330,6 +340,13 @@ public class MyClass {
 						    	language.click();
 						    	Thread.currentThread().sleep(3000);
 						    	WebElement language1 = driver.findElement(By.cssSelector(".-space-v-8:nth-child(3) > .select-menu--item:nth-child(2) > .select-menu--text"));;
+					    		language1.click();
+						    }
+						    if (Mode.equals("Python3")) {
+						    	WebElement language = driver.findElement(By.cssSelector(".select:nth-child(2) .select--title"));;
+						    	language.click();
+						    	Thread.currentThread().sleep(3000);
+						    	WebElement language1 = driver.findElement(By.cssSelector(".-space-v-8:nth-child(4) > .select-menu--item:nth-child(5) > .select-menu--text"));;
 					    		language1.click();
 						    }
 
@@ -359,14 +376,16 @@ public class MyClass {
 				    	WebElement messageSubmit = driver.findElement(By.cssSelector(".verdict-message"));;
 				    	if (messageSubmit.getText().contains("error") && Mode.equals("JS")) {
 				    		System.out.println("FAIL=======Dap AN JS SAI");
-				    		createFileNotFound("F:\\Selenium\\OTS\\Method_SourceCodeError\\",menthodName,"js");
+				    		createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeError\\",menthodName,"js");
 				    		WebElement language = driver.findElement(By.cssSelector(".select:nth-child(2) .select--title"));;
 					    	language.click();
 					    	Thread.currentThread().sleep(3000);
 					    	// neu la JS chon lai Java
-						    WebElement language1 = driver.findElement(By.cssSelector(".-space-v-8:nth-child(3) > .select-menu--item:nth-child(1) > .select-menu--text"));;
+//						    WebElement language1 = driver.findElement(By.cssSelector(".-space-v-8:nth-child(3) > .select-menu--item:nth-child(1) > .select-menu--text"));;
+					    	WebElement language1 = driver.findElement(By.cssSelector(".-space-v-8:nth-child(4) > .select-menu--item:nth-child(5) > .select-menu--text"));;
+
 					    	language1.click();
-						    sourceCode = readContent(folderJava);
+						    sourceCode = readContent(folderPy);
 //						    try {
 //							    Thread.currentThread().sleep(1000);
 //							    js.executeScript("return document.getElementsByClassName(' CodeMirror-line ')[0].remove();");
@@ -389,19 +408,23 @@ public class MyClass {
 				 			Thread.currentThread().sleep(10000);
 				 			messageSubmit = driver.findElement(By.cssSelector(".verdict-message"));;
 					    	if (messageSubmit.getText().contains("error")) {
-					    		System.out.println("FAIL========Dap AN JAVA SAI");
-					    		createFileNotFound("F:\\Selenium\\OTS\\Method_SourceCodeError\\",menthodName,"java");
+//					    		System.out.println("FAIL========Dap AN JAVA SAI");
+//					    		createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeError\\",menthodName,"java");
+					    		createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeError\\",menthodName,"py3");
 					    	} else {
-					    		System.out.println("OK*******Co Dap AN JAVA");
+//					    		System.out.println("OK*******Co Dap AN JAVA");
+					    		System.out.println("OK*******Co Dap AN Python3");
 					    	}
 					    } else {
-					    	System.out.println("OK*******Khong Co Dap AN JS");
+//					    	System.out.println("OK*******Khong Co Dap AN JS");
+					    	System.out.println("OK*******Co Dap AN Python3");
 					    }
 
 					} catch (Exception e) {
 						// see task
 						System.out.println("ERROR========Co Loi");
-						createFileNotFound("F:\\Selenium\\OTS\\Method_SourceCodeError\\",menthodName,"java");
+//						createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeError\\",menthodName,"java");
+						createFileNotFound("E:\\share$\\Presentation\\Selenium\\SourceCode\\Codesignal-Selenium\\Method_SourceCodeError\\",menthodName,"py3");
 						e.printStackTrace();
 					}
 
